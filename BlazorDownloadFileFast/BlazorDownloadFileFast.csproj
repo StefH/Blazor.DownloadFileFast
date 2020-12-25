@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
+		<LangVersion>8.0</LangVersion>
+		<Version>0.0.1</Version>
+		<RootNamespace>Blazor.DownloadFile</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' != 'net5.0'">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.10" />
+		<PackageReference Include="Microsoft.JSInterop" Version="3.1.10" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net5.0'">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+		<PackageReference Include="Microsoft.JSInterop" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="JavaScript\download.js" />
+		<EmbeddedResource Include="JavaScript\download.js">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</EmbeddedResource>
+	</ItemGroup>
+
+</Project>

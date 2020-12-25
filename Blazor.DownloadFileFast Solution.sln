@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29521.150
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{33997DC9-84AA-47E3-BEB5-C418065DC503}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{42E32377-5505-45FD-81C2-5BAAE2058B79}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorDownloadFileFast", "BlazorDownloadFileFast\BlazorDownloadFileFast.csproj", "{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{748A3D8F-1448-4F9D-B74D-5350F6BAFE9E} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95736335-0C8B-4FDA-8722-E08046339B83}
+	EndGlobalSection
+EndGlobal
