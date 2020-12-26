@@ -8,10 +8,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{42E32377-5505-45FD-81C2-5BAAE2058B79}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		GitHubReleaseNotes.txt = GitHubReleaseNotes.txt
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast", "Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj", "{1C59FDCA-CBCD-4274-B510-35C40AC1C460}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast", "Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj", "{B6269AAC-170A-4346-1234-579DED3D9A95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Example", "Blazor.DownloadFileFast.Example\Blazor.DownloadFileFast.Example.csproj", "{742B15E3-C255-4042-9BC0-A0676830EBF6}"
 EndProject
@@ -21,10 +22,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1C59FDCA-CBCD-4274-B510-35C40AC1C460}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C59FDCA-CBCD-4274-B510-35C40AC1C460}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C59FDCA-CBCD-4274-B510-35C40AC1C460}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C59FDCA-CBCD-4274-B510-35C40AC1C460}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6269AAC-170A-4346-1234-579DED3D9A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6269AAC-170A-4346-1234-579DED3D9A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6269AAC-170A-4346-1234-579DED3D9A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6269AAC-170A-4346-1234-579DED3D9A95}.Release|Any CPU.Build.0 = Release|Any CPU
 		{742B15E3-C255-4042-9BC0-A0676830EBF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{742B15E3-C255-4042-9BC0-A0676830EBF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{742B15E3-C255-4042-9BC0-A0676830EBF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,7 +35,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{1C59FDCA-CBCD-4274-B510-35C40AC1C460} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
+		{B6269AAC-170A-4346-1234-579DED3D9A95} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
 		{742B15E3-C255-4042-9BC0-A0676830EBF6} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
