@@ -6,7 +6,7 @@ Fast download from files to the browser from Blazor without any javascript libra
 
 BlazorDownloadFileFast is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client.
 
-When using this project in a NET 5.0 Blazor WebAssembly project, there is an additional speed increase. Read the blog post mentioned from Gérald Barré in the Credits.
+When using this project in a NET 5.0 Blazor WebAssembly project, there is an additional speed increase. Read the blog post mentioned from Gérald Barré in the credits.
 
 
 ## Usage
@@ -25,13 +25,14 @@ public IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
 ### Use in your code
 ``` c#
 byte[] bytes = ...; 
-await BlazorDownloadFileService.DownloadAsync("example.txt", bytes);
+await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
 ```
 
 ## Credits
 
-- The code from this project is based on [Generating and efficiently exporting a file in a Blazor WebAssembly application](https://www.meziantou.net/generating-and-downloading-a-file-in-a-blazor-webassembly-application.htm)
-- [MimeTypeMap](https://github.com/samuelneff/MimeTypeMap)
+- The idea and code from this project is based on [Generating and efficiently exporting a file in a Blazor WebAssembly application](https://www.meziantou.net/generating-and-downloading-a-file-in-a-blazor-webassembly-application.htm)
+- For resolving the Content-Type based on the file extension, this code is used: [MimeTypeMap](https://github.com/samuelneff/MimeTypeMap)
+- This project is inspired by [BlazorDownloadFile](https://github.com/arivera12/BlazorDownloadFile)
 
 ## Demo
 

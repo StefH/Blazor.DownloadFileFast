@@ -1,5 +1,5 @@
-﻿using Blazor.DownloadFile.Interfaces;
-using Blazor.DownloadFile.Services;
+﻿using Blazor.DownloadFileFast.Interfaces;
+using Blazor.DownloadFileFast.Services;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.JSInterop;
 
@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
     public static class ServiceCollectionExtensions
     {
         /// <summary>
-        /// Registers blazor download file service
+        /// Registers the Blazor Download file Service
         /// </summary>
         public static IServiceCollection AddBlazorDownloadFile(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
         {

@@ -1,15 +1,19 @@
 ﻿using System.Threading.Tasks;
-using Blazor.DownloadFile.Interfaces;
-using Blazor.DownloadFile.JavaScript;
-using Blazor.DownloadFile.Utils;
+using Blazor.DownloadFileFast.Interfaces;
+using Blazor.DownloadFileFast.JavaScript;
+using Blazor.DownloadFileFast.Utils;
 using Microsoft.JSInterop;
 
-namespace Blazor.DownloadFile.Services
+namespace Blazor.DownloadFileFast.Services
 {
     internal class BlazorDownloadFileService : IBlazorDownloadFileService
     {
         private readonly IJSRuntime _js;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BlazorDownloadFileService"/> class.
+        /// </summary>
+        /// <param name="js">The JSRuntime.</param>
         public BlazorDownloadFileService(IJSRuntime js)
         {
             _js = js;
@@ -17,11 +21,13 @@ namespace Blazor.DownloadFile.Services
             Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript));
         }
 
-        public ValueTask<bool> DownloadAsync(string fileName, byte[] bytes)
+        /// <see cref="IBlazorDownloadFileService.DownloadFileAsync(string, byte[])"/>
+        public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes)
         {
             return DownloadAsync(fileName, bytes, MimeTypeMap.GetMimeType(fileName));
         }
 
+        /// <see cref="IBlazorDownloadFileService.DownloadAsync(string, byte[], string)"/>
         public ValueTask<bool> DownloadAsync(string fileName, byte[] bytes, string contentType)
         {
 #if NET5_0

@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using System.Threading.Tasks;
-using Blazor.DownloadFile.Interfaces;
+using Blazor.DownloadFileFast.Interfaces;
 using Microsoft.AspNetCore.Components;
 using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
@@ -18,7 +18,7 @@ namespace Blazor.DownloadFileFast.Example.Pages
         {
             var bytes = Encoding.ASCII.GetBytes(_random.Generate());
 
-            await BlazorDownloadFileService.DownloadAsync("example.txt", bytes);
+            await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
         }
     }
 }

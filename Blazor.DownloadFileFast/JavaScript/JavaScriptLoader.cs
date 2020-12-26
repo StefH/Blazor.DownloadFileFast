@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Reflection;
 
-namespace Blazor.DownloadFile.JavaScript
+namespace Blazor.DownloadFileFast.JavaScript
 {
     internal sealed class JavaScriptLoader
     {
-        private const string Resource = "Blazor.DownloadFile.JavaScript.download.js";
+        private const string Resource = "Blazor.DownloadFileFast.JavaScript.download.js";
 
         public string JavaScript { get; private set; }
 

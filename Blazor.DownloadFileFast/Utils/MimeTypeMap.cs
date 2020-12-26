@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Blazor.DownloadFile.Utils
+namespace Blazor.DownloadFileFast.Utils
 {
     /// <summary>
     /// Class MimeTypeMap. Copied from https://github.com/samuelneff/MimeTypeMap
