@@ -1,12 +1,11 @@
 <Project>
 	<PropertyGroup>
+		<Version>0.0.2</Version>
 		<Nullable>enable</Nullable>
-		<!--<LangVersion>latest</LangVersion>-->
-		<Nullable>enable</Nullable>
-		<!--<WarningsAsErrors>nullable</WarningsAsErrors>-->
-
+		<LangVersion>8.0</LangVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/StefH/Blazor.DownloadFileFast</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/StefH/Blazor.DownloadFileFast</RepositoryUrl>
 	</PropertyGroup>
-
 </Project>

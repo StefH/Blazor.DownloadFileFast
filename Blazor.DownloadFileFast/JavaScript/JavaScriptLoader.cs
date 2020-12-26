@@ -3,11 +3,13 @@ using System.Reflection;
 
 namespace Blazor.DownloadFile.JavaScript
 {
-    internal static class JavaScriptLoader
+    internal sealed class JavaScriptLoader
     {
         private const string Resource = "Blazor.DownloadFile.JavaScript.download.js";
 
-        public static string Load()
+        public string JavaScript { get; private set; }
+
+        private JavaScriptLoader()
         {
             var assembly = typeof(JavaScriptLoader).GetTypeInfo().Assembly;
 
@@ -15,9 +17,11 @@ namespace Blazor.DownloadFile.JavaScript
             {
                 using (var reader = new StreamReader(stream))
                 {
-                    return reader.ReadToEnd();
+                    JavaScript = reader.ReadToEnd();
                 }
             }
         }
+
+        public static JavaScriptLoader Instance { get; } = new JavaScriptLoader();
     }
 }

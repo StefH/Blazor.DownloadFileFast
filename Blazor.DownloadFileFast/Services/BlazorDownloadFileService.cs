@@ -14,7 +14,7 @@ namespace Blazor.DownloadFile.Services
         {
             _js = js;
 
-            Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Load()));
+            Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript));
         }
 
         public ValueTask<bool> DownloadAsync(string fileName, byte[] bytes)
