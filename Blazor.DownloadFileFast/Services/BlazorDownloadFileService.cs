@@ -24,11 +24,11 @@ namespace Blazor.DownloadFileFast.Services
         /// <see cref="IBlazorDownloadFileService.DownloadFileAsync(string, byte[])"/>
         public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes)
         {
-            return DownloadAsync(fileName, bytes, MimeTypeMap.GetMimeType(fileName));
+            return DownloadFileAsync(fileName, bytes, MimeTypeMap.GetMimeType(fileName));
         }
 
-        /// <see cref="IBlazorDownloadFileService.DownloadAsync(string, byte[], string)"/>
-        public ValueTask<bool> DownloadAsync(string fileName, byte[] bytes, string contentType)
+        /// <see cref="IBlazorDownloadFileService.DownloadFileAsync(string, byte[], string)"/>
+        public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes, string contentType)
         {
 #if NET5_0
             // Check if the IJSRuntime is the WebAssembly implementation of the JSRuntime

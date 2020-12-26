@@ -20,6 +20,6 @@ namespace Blazor.DownloadFileFast.Interfaces
         /// <param name="fileName">Name of the file.</param>
         /// <param name="bytes">The file-content.</param>
         /// <param name="contentType">The Content-Type.</param>
-        ValueTask<bool> DownloadAsync(string fileName, byte[] bytes, string contentType);
+        ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes, string contentType);
     }
 }
