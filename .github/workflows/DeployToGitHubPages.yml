@@ -1,6 +1,8 @@
 name: DeployToGitHubPages
 env:
-  PUBLISH_DIR: Blazor.DownloadFileFast.Example/bin/Release/net5.0/publish/wwwroot
+  PROJECT: Blazor.DownloadFileFast
+  APP: Blazor.DownloadFileFast.Example
+  PUBLISH_DIR: ${{ APP }}/bin/Release/net5.0/publish/wwwroot
 
 on:
   push:
@@ -17,7 +19,13 @@ jobs:
        dotnet-version: '5.0.x'
 
     - name: Publish app
-      run: dotnet publish -c Release Blazor.DownloadFileFast.Example
+      run: dotnet publish -c Release ${{ APP }}
+
+    - name: Rewrite base href
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: ${{ env.PUBLISH_DIR }}/index.html
+        base_href: /${{ PROJECT }}/
 
     - name: GitHub Pages
       if: success()
