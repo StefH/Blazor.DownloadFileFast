@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
-		<Title>BlazorDownloadFileFast</Title>
+		<PackageId>BlazorDownloadFileFast</PackageId>
 		<Description>Fast download from files to the browser from Blazor without any javascript library reference or dependency.</Description>
 		<RootNamespace>Blazor.DownloadFileFast</RootNamespace>
 		<Authors>Gérald Barré;Stef Heyenrath</Authors>
