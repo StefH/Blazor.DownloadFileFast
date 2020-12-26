@@ -13,13 +13,10 @@ namespace Blazor.DownloadFileFast.JavaScript
         {
             var assembly = typeof(JavaScriptLoader).GetTypeInfo().Assembly;
 
-            using (var stream = assembly.GetManifestResourceStream(Resource))
-            {
-                using (var reader = new StreamReader(stream))
-                {
-                    JavaScript = reader.ReadToEnd();
-                }
-            }
+            using var stream = assembly.GetManifestResourceStream(Resource);
+            using var reader = new StreamReader(stream);
+
+            JavaScript = reader.ReadToEnd();
         }
 
         public static JavaScriptLoader Instance { get; } = new JavaScriptLoader();
