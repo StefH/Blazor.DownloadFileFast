@@ -16,6 +16,8 @@
 
     // We don't need to keep the url, let's release the memory
     URL.revokeObjectURL(exportUrl);
+
+    return true;
 }
 
 // Convert a base64 string to a Uint8Array. This is needed to create a blob object from the base64 string.
@@ -65,4 +67,6 @@ function BlazorDownloadFileFast(name, contentType, content) {
 
     // We don't need to keep the url, let's release the memory
     URL.revokeObjectURL(exportUrl);
+
+    return true;
 }
