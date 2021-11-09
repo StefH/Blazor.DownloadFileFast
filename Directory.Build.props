@@ -1,8 +1,8 @@
 <Project>
 	<PropertyGroup>
-		<Version>0.0.4</Version>
+		<Version>0.1.0</Version>
 		<Nullable>enable</Nullable>
-		<LangVersion>8.0</LangVersion>
+		<LangVersion>10.0</LangVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/StefH/Blazor.DownloadFileFast</PackageProjectUrl>
 		<RepositoryType>git</RepositoryType>
