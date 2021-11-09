@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace Blazor.DownloadFileFast.Utils;
 
-namespace Blazor.DownloadFileFast.Utils
+/// <summary>
+/// Class MimeTypeMap. Copied from https://github.com/samuelneff/MimeTypeMap
+/// </summary>
+public static class MimeTypeMap
 {
-    /// <summary>
-    /// Class MimeTypeMap. Copied from https://github.com/samuelneff/MimeTypeMap
-    /// </summary>
-    public static class MimeTypeMap
-    {
-        private const string Dot = ".";
-        private const string DefaultMimeType = "application/octet-stream";
-        private static readonly Lazy<IDictionary<string, string>> _mappings = new Lazy<IDictionary<string, string>>(BuildMappings);
+    private const string Dot = ".";
+    private const string QuestionMark = "?";
+    private const string DefaultMimeType = "application/octet-stream";
+    private static readonly Lazy<IDictionary<string, string>> _mappings = new Lazy<IDictionary<string, string>>(BuildMappings);
 
-        private static IDictionary<string, string> BuildMappings()
-        {
-            var mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
+    private static IDictionary<string, string> BuildMappings()
+    {
+        var mappings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase) {
 
                 #region Big freaking list of mime types
             
@@ -190,6 +187,7 @@ namespace Blazor.DownloadFileFast.Utils
                 {".fsscript", "application/fsharp-script"},
                 {".fsx", "application/fsharp-script"},
                 {".generictest", "application/xml"},
+                {".geojson", "application/geo+json"},
                 {".gif", "image/gif"},
                 {".gpx", "application/gpx+xml"},
                 {".group", "text/x-ms-group"},
@@ -726,88 +724,95 @@ namespace Blazor.DownloadFileFast.Utils
 
                 };
 
-            var cache = mappings.ToList(); // need ToList() to avoid modifying while still enumerating
+        var cache = mappings.ToList(); // need ToList() to avoid modifying while still enumerating
 
-            foreach (var mapping in cache)
-            {
-                if (!mappings.ContainsKey(mapping.Value))
-                {
-                    mappings.Add(mapping.Value, mapping.Key);
-                }
-            }
-
-            return mappings;
-        }
-
-        /// <summary>
-        /// Tries to get the type of the MIME from the provided string.
-        /// </summary>
-        /// <param name="str">The filename or extension.</param>
-        /// <param name="mimeType">The variable to store the MIME type.</param>
-        /// <returns>The MIME type.</returns>
-        /// <exception cref="ArgumentNullException" />
-        public static bool TryGetMimeType(string str, out string mimeType)
+        foreach (var mapping in cache)
         {
-            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
-
-            if (!str.StartsWith(Dot))
+            if (!mappings.ContainsKey(mapping.Value))
             {
-                var index = str.LastIndexOf(Dot);
-                if (index != -1 && str.Length > index + 1)
-                {
-                    str = str.Substring(index + 1);
-                }
-
-                str = Dot + str;
+                mappings.Add(mapping.Value, mapping.Key);
             }
-
-            return _mappings.Value.TryGetValue(str, out mimeType);
         }
 
-        /// <summary>
-        /// Gets the type of the MIME from the provided string.
-        /// </summary>
-        /// <param name="str">The filename or extension.</param>
-        /// <returns>The MIME type.</returns>
-        /// <exception cref="ArgumentNullException" />
-        public static string GetMimeType(string str)
+        return mappings;
+    }
+
+    /// <summary>
+    /// Tries to get the type of the MIME from the provided string.
+    /// </summary>
+    /// <param name="str">The filename or extension.</param>
+    /// <param name="mimeType">The variable to store the MIME type.</param>
+    /// <returns>The MIME type.</returns>
+    /// <exception cref="ArgumentNullException" />
+    public static bool TryGetMimeType(string str, out string mimeType)
+    {
+        if (str == null)
         {
-            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
-
-            return TryGetMimeType(str, out var result) ? result : DefaultMimeType;
+            throw new ArgumentNullException(nameof(str));
         }
 
-        /// <summary>
-        /// Gets the extension from the provided MINE type.
-        /// </summary>
-        /// <param name="mimeType">Type of the MIME.</param>
-        /// <param name="throwErrorIfNotFound">if set to <c>true</c>, throws error if extension's not found.</param>
-        /// <returns>The extension.</returns>
-        /// <exception cref="ArgumentNullException" />
-        /// <exception cref="ArgumentException" />
-        public static string GetExtension(string mimeType, bool throwErrorIfNotFound = true)
+        var indexQuestionMark = str.IndexOf(QuestionMark, StringComparison.Ordinal);
+        if (indexQuestionMark != -1)
         {
-            if (string.IsNullOrWhiteSpace(mimeType))
-            {
-                throw new ArgumentNullException(nameof(mimeType));
-            }
-
-            if (mimeType.StartsWith(Dot))
-            {
-                throw new ArgumentException("Requested mime type is not valid: " + mimeType);
-            }
-
-            if (_mappings.Value.TryGetValue(mimeType, out string extension))
-            {
-                return extension;
-            }
-
-            if (throwErrorIfNotFound)
-            {
-                throw new ArgumentException("Requested mime type is not registered: " + mimeType);
-            }
-
-            return string.Empty;
+            str = str.Remove(indexQuestionMark);
         }
+
+
+        if (!str.StartsWith(Dot))
+        {
+            var index = str.LastIndexOf(Dot);
+            if (index != -1 && str.Length > index + 1)
+            {
+                str = str.Substring(index + 1);
+            }
+
+            str = Dot + str;
+        }
+
+        return _mappings.Value.TryGetValue(str, out mimeType);
+    }
+
+    /// <summary>
+    /// Gets the type of the MIME from the provided string.
+    /// </summary>
+    /// <param name="str">The filename or extension.</param>
+    /// <returns>The MIME type.</returns>
+    /// <exception cref="ArgumentNullException" />
+    public static string GetMimeType(string str)
+    {
+        return MimeTypeMap.TryGetMimeType(str, out var result) ? result : DefaultMimeType;
+    }
+
+    /// <summary>
+    /// Gets the extension from the provided MINE type.
+    /// </summary>
+    /// <param name="mimeType">Type of the MIME.</param>
+    /// <param name="throwErrorIfNotFound">if set to <c>true</c>, throws error if extension's not found.</param>
+    /// <returns>The extension.</returns>
+    /// <exception cref="ArgumentNullException" />
+    /// <exception cref="ArgumentException" />
+    public static string GetExtension(string mimeType, bool throwErrorIfNotFound = true)
+    {
+        if (mimeType == null)
+        {
+            throw new ArgumentNullException(nameof(mimeType));
+        }
+
+        if (mimeType.StartsWith(Dot))
+        {
+            throw new ArgumentException("Requested mime type is not valid: " + mimeType);
+        }
+
+        if (_mappings.Value.TryGetValue(mimeType, out string extension))
+        {
+            return extension;
+        }
+
+        if (throwErrorIfNotFound)
+        {
+            throw new ArgumentException("Requested mime type is not registered: " + mimeType);
+        }
+
+        return string.Empty;
     }
 }
