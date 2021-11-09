@@ -11,11 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Generate-ReleaseNotes.bat = Generate-ReleaseNotes.bat
 		README.md = README.md
+		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast", "Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj", "{B6269AAC-170A-4346-1234-579DED3D9A95}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Example", "Blazor.DownloadFileFast.Example\Blazor.DownloadFileFast.Example.csproj", "{742B15E3-C255-4042-9BC0-A0676830EBF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{35BBC692-47E8-4A12-8F8E-7D8C9ADA9F28}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\DeployToGitHubPages.yml = .github\workflows\DeployToGitHubPages.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B6269AAC-170A-4346-1234-579DED3D9A95} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
 		{742B15E3-C255-4042-9BC0-A0676830EBF6} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
+		{35BBC692-47E8-4A12-8F8E-7D8C9ADA9F28} = {42E32377-5505-45FD-81C2-5BAAE2058B79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736335-0C8B-4FDA-8722-E08046339B83}
