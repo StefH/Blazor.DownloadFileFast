@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blazor.DownloadFileFast.Example
+namespace Blazor.DownloadFileFast.Example_NET5
 {
     public class Program
     {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
 
-namespace Blazor.DownloadFileFast.Example.Pages
+namespace Blazor.DownloadFileFast.Example_NET5.Pages
 {
     public partial class Index
     {
