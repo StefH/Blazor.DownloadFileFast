@@ -1,6 +1,6 @@
 ﻿function BlazorDownloadFile(filename, contentType, content) {
-    // Blazor marshall byte[] to a base64 string, so we first need to convert the string (content) to a Uint8Array to create the File
-    const data = base64DecToArr(content);
+    // In < .net6.0 Blazor marshall byte[] to a base64 string, so we first need to convert the string (content) to a Uint8Array to create the File
+    const data = typeof(content) === "string" ? base64DecToArr(content) : content;
 
     // Create the URL
     const file = new File([data], filename, { type: contentType });
