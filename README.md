@@ -6,7 +6,7 @@ Fast download from files to the browser from Blazor without any javascript libra
 
 BlazorDownloadFileFast is the solution to saving files on the client-side, and is perfect for web apps that generates files on the client.
 
-When using this project in a NET 5.0 Blazor WebAssembly project, there is an additional speed increase. Read the blog post mentioned from Gérald Barré in the credits.
+When using this project in a NET 5.0 or 6.0 Blazor WebAssembly project, there is an additional speed increase. Read the blog post mentioned from GÃ©rald BarrÃ© in the credits.
 
 
 ## Usage
