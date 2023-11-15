@@ -4,7 +4,7 @@ using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
 using System.Text;
 
-namespace Blazor.DownloadFileFast.Example_NET6.Pages;
+namespace Blazor.DownloadFileFast.Example_NET7.Pages;
 
 public partial class Index
 {
