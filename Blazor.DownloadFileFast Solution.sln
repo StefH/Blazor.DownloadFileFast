@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Exa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast", "Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj", "{B6269AAC-170A-4346-1234-579DED3D9A95}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Example_NET8", "Blazor.DownloadFileFast.Example_NET8\Blazor.DownloadFileFast.Example_NET8.csproj", "{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{B6269AAC-170A-4346-1234-579DED3D9A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6269AAC-170A-4346-1234-579DED3D9A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6269AAC-170A-4346-1234-579DED3D9A95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,6 +66,7 @@ Global
 		{94160CBF-C56B-4D1E-A597-430D9C029DCE} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 		{CCC2C901-8637-46FF-99CE-D8175305F8E2} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 		{B6269AAC-170A-4346-1234-579DED3D9A95} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
+		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736335-0C8B-4FDA-8722-E08046339B83}

@@ -7,26 +7,13 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="wwwroot\download.js" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <EmbeddedResource Include="wwwroot\download.js">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-		
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
 		<PackageReference Include="RandomDataGenerator.Net" Version="1.0.17" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj" />
+		<ProjectReference Include="..\Blazor.DownloadFileFast\Blazor.DownloadFileFast.csproj" />
 	</ItemGroup>
 
 </Project>

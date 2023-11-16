@@ -66,6 +66,6 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 public static partial class BlazorDownloadFileInterop
 {
     [JSImport("BlazorDownloadFileFast7Up", "download.js")]
-    public static partial bool BlazorDownloadFileFast(string fileName, string contentType, byte[] data);
+    internal static partial bool BlazorDownloadFileFast(string fileName, string contentType, byte[] data);
 }
 #endif
