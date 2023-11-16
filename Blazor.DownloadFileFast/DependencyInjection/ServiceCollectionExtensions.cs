@@ -12,8 +12,6 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddBlazorDownloadFile(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
     {
         return ServiceCollectionDescriptorExtensions.Add(services,
-            new ServiceDescriptor(typeof(IBlazorDownloadFileService),
-            sp => new BlazorDownloadFileService(sp.GetRequiredService<IJSRuntime>()),
-            lifetime));
+            new ServiceDescriptor(typeof(IBlazorDownloadFileService), sp => new BlazorDownloadFileService(sp.GetRequiredService<IJSRuntime>()), lifetime));
     }
 }

@@ -1,8 +1,8 @@
 ﻿#if NET7_0_OR_GREATER
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
-
 #endif
+using Blazor.DownloadFileFast.JavaScript;
 using Microsoft.JSInterop;
 
 namespace Blazor.DownloadFileFast.Services;
@@ -19,22 +19,20 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
     {
         _js = js;
 
-        Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript));
-        Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript2));
-
-        // https://linkdotnet.github.io/tips-and-tricks/blazor/#use-jsimport-or-jsexport-attributes-to-simplify-the-interop
 #if NET7_0_OR_GREATER
-        Task.Run(async () => await JSHost.ImportAsync("download.js", ""));
+        Task.Run(async () => await JSHost.ImportAsync("download.js", "/_content/BlazorDownloadFileFast/download7up.js"));
+#else
+        Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript));
 #endif
     }
 
-    /// <see cref="IBlazorDownloadFileService.DownloadFileAsync(string, byte[])"/>
+    /// <inheritdoc />
     public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes)
     {
         return DownloadFileAsync(fileName, bytes, MimeTypeMap.GetMimeType(fileName));
     }
 
-    /// <see cref="IBlazorDownloadFileService.DownloadFileAsync(string, byte[], string)"/>
+    /// <inheritdoc />
     public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes, string contentType)
     {
 #if NET5_0_OR_GREATER
@@ -60,10 +58,11 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 }
 
 #if NET7_0_OR_GREATER
+// https://linkdotnet.github.io/tips-and-tricks/blazor/#use-jsimport-or-jsexport-attributes-to-simplify-the-interop
 [SupportedOSPlatform("browser")]
 public static partial class BlazorDownloadFileInterop
 {
-    [JSImport("BlazorDownloadFileFast", "download.js")]
+    [JSImport("BlazorDownloadFileFast7Up", "download.js")]
     public static partial bool BlazorDownloadFileFast(string fileName, string contentType, byte[] data);
 }
 #endif

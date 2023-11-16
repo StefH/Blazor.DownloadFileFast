@@ -1,5 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0;net8.0</TargetFrameworks>
 		<Title>Blazor.DownloadFileFast</Title>
@@ -14,6 +13,10 @@
 		<AssemblyOriginatorKeyFile>Blazor.DownloadFileFast.snk</AssemblyOriginatorKeyFile>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -53,15 +56,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="JavaScript\download.js" />
-		<None Remove="JavaScript\download2.js" />
-		<EmbeddedResource Include="JavaScript\download2.js">
-		  <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-		  <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-		</EmbeddedResource>
-		<EmbeddedResource Include="JavaScript\download.js">
+		<None Remove="wwwwroot\download.js" />
+		<EmbeddedResource Include="wwwroot\download7up.js">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</EmbeddedResource>
 	</ItemGroup>
 
