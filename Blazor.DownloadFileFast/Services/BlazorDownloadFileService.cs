@@ -1,8 +1,10 @@
 ﻿#if NET7_0_OR_GREATER
 using System.Runtime.InteropServices.JavaScript;
 using System.Runtime.Versioning;
-#endif
+#else
 using Blazor.DownloadFileFast.JavaScript;
+#endif
+
 using Microsoft.JSInterop;
 
 namespace Blazor.DownloadFileFast.Services;
@@ -22,7 +24,7 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 #if NET7_0_OR_GREATER
         Task.Run(async () => await JSHost.ImportAsync("download.js", "/_content/BlazorDownloadFileFast/download7up.js"));
 #else
-        Task.Run(async () => await _js.InvokeVoidAsync("eval", JavaScriptLoader.Instance.JavaScript));
+        Task.Run(async () => await _js.InvokeVoidAsync("eval", EmbeddedFileLoader.Instance.DownloadJS));
 #endif
     }
 
@@ -58,7 +60,8 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 }
 
 #if NET7_0_OR_GREATER
-// https://linkdotnet.github.io/tips-and-tricks/blazor/#use-jsimport-or-jsexport-attributes-to-simplify-the-interop
+// - https://linkdotnet.github.io/tips-and-tricks/blazor/#use-jsimport-or-jsexport-attributes-to-simplify-the-interop
+// - https://devblogs.microsoft.com/dotnet/use-net-7-from-any-javascript-app-in-net-7/
 [SupportedOSPlatform("browser")]
 public static partial class BlazorDownloadFileInterop
 {

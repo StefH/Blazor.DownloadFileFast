@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<SupportedPlatform Include="browser" />
+		<!--<SupportedPlatform Include="browser" />-->
 	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -56,11 +56,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Remove="wwwwroot\download.js" />
-		<EmbeddedResource Include="wwwroot\download7up.js">
+		<None Remove="JavaScript\download.js" />
+		<EmbeddedResource Include="JavaScript\download.js">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</EmbeddedResource>
+
+		<None Remove="wwwwroot\download7up.js" />
+		<EmbeddedResource Include="wwwroot\download7up.js">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 		</EmbeddedResource>
 	</ItemGroup>
 

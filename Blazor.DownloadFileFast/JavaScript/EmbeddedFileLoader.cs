@@ -2,21 +2,21 @@
 
 namespace Blazor.DownloadFileFast.JavaScript;
 
-internal sealed class JavaScriptLoader
+internal sealed class EmbeddedFileLoader
 {
     private const string Resource = "Blazor.DownloadFileFast.JavaScript.download.js";
 
-    public string JavaScript { get; }
+    public string DownloadJS { get; }
 
-    private JavaScriptLoader()
+    private EmbeddedFileLoader()
     {
-        var assembly = typeof(JavaScriptLoader).GetTypeInfo().Assembly;
+        var assembly = typeof(EmbeddedFileLoader).GetTypeInfo().Assembly;
 
         using var stream = assembly.GetManifestResourceStream(Resource)!;
         using var reader = new StreamReader(stream);
 
-        JavaScript = reader.ReadToEnd();
+        DownloadJS = reader.ReadToEnd();
     }
 
-    public static JavaScriptLoader Instance { get; } = new();
+    public static EmbeddedFileLoader Instance { get; } = new();
 }
