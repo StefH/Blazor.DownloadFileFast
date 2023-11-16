@@ -12,10 +12,15 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>Blazor.DownloadFileFast.snk</AssemblyOriginatorKeyFile>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<!--<SupportedPlatform Include="browser" />-->
+		<None Include="../PackageReadme.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -28,6 +33,10 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+		<PackageReference Include="Nullable" Version="1.3.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">

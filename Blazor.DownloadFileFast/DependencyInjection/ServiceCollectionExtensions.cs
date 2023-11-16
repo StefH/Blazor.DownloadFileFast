@@ -11,6 +11,11 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static IServiceCollection AddBlazorDownloadFile(this IServiceCollection services, ServiceLifetime lifetime = ServiceLifetime.Scoped)
     {
+        if (services == null)
+        {
+            throw new ArgumentNullException(nameof(services));
+        }
+
         return ServiceCollectionDescriptorExtensions.Add(services,
             new ServiceDescriptor(typeof(IBlazorDownloadFileService), sp => new BlazorDownloadFileService(sp.GetRequiredService<IJSRuntime>()), lifetime));
     }
