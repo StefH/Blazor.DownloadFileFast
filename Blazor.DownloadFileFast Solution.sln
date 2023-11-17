@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{35BBC692-47E8-4A12-8F8E-7D8C9ADA9F28}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\azure-static-web-apps-wonderful-glacier-0cf7ba303.yml = .github\workflows\azure-static-web-apps-wonderful-glacier-0cf7ba303.yml
 		.github\workflows\DeployToGitHubPages.yml = .github\workflows\DeployToGitHubPages.yml
 	EndProjectSection
 EndProject

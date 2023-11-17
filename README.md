@@ -36,4 +36,5 @@ await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
 
 ## Demo
 
-https://stefh.github.io/Blazor.DownloadFileFast/
+- https://wonderful-glacier-0cf7ba303.4.azurestaticapps.net
+- https://stefh.github.io/Blazor.DownloadFileFast/
