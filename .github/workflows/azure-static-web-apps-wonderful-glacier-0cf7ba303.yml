@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
-      - name: Setup dotnet 8
+      - name: Setup dotnet
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: | 
+          dotnet-version: |
+            6.x.x
+            7.x.x
             8.x.x
       - uses: actions/checkout@v3
         with:
