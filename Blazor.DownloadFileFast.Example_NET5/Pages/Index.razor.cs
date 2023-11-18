@@ -5,20 +5,19 @@ using Microsoft.AspNetCore.Components;
 using RandomDataGenerator.FieldOptions;
 using RandomDataGenerator.Randomizers;
 
-namespace Blazor.DownloadFileFast.Example_NET5.Pages
+namespace Blazor.DownloadFileFast.Example_NET5.Pages;
+
+public partial class Index
 {
-    public partial class Index
+    [Inject]
+    public IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
+
+    private readonly IRandomizerString _random = RandomizerFactory.GetRandomizer(new FieldOptionsTextLipsum { Paragraphs = 10 });
+
+    public async Task DownloadFileAsync()
     {
-        [Inject]
-        public IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
+        var bytes = Encoding.ASCII.GetBytes(_random.Generate());
 
-        private IRandomizerString _random = RandomizerFactory.GetRandomizer(new FieldOptionsTextLipsum { Paragraphs = 10 });
-
-        public async Task DownloadFileAsync()
-        {
-            var bytes = Encoding.ASCII.GetBytes(_random.Generate());
-
-            await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
-        }
+        await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
     }
 }

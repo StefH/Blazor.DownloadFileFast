@@ -1,7 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 	<PropertyGroup>
-		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0;net7.0</TargetFrameworks>
 		<Title>Blazor.DownloadFileFast</Title>
 		<PackageId>BlazorDownloadFileFast</PackageId>
 		<Description>Fast download from files to the browser from Blazor without any javascript library reference or dependency.</Description>
@@ -13,14 +12,31 @@
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>Blazor.DownloadFileFast.snk</AssemblyOriginatorKeyFile>
 		<ImplicitUsings>enable</ImplicitUsings>
+		<PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="../PackageReadme.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+	</ItemGroup>
 
 	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(TargetFramework)' == 'net7.0' or '$(TargetFramework)' == 'net8.0'">
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+		<PackageReference Include="Nullable" Version="1.3.1">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' or '$(TargetFramework)' == 'netstandard2.1'">
@@ -38,11 +54,26 @@
 		<PackageReference Include="Microsoft.JSInterop" Version="6.0.0" />
 	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.JSInterop" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.JSInterop" Version="8.0.0" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<None Remove="JavaScript\download.js" />
 		<EmbeddedResource Include="JavaScript\download.js">
 			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 			<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+		</EmbeddedResource>
+
+		<None Remove="wwwwroot\download7up.js" />
+		<EmbeddedResource Include="wwwroot\download7up.js">
+			<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
 		</EmbeddedResource>
 	</ItemGroup>
 
