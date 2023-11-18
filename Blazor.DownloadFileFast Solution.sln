@@ -14,12 +14,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ReleaseNotes.md = ReleaseNotes.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Actions", "Actions", "{35BBC692-47E8-4A12-8F8E-7D8C9ADA9F28}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\azure-static-web-apps-wonderful-glacier-0cf7ba303.yml = .github\workflows\azure-static-web-apps-wonderful-glacier-0cf7ba303.yml
-		.github\workflows\DeployToGitHubPages.yml = .github\workflows\DeployToGitHubPages.yml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{1D3B0899-8261-4023-B62E-F1A70CF0BBD8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Example_NET6", "Blazor.DownloadFileFast.Example_NET6\Blazor.DownloadFileFast.Example_NET6.csproj", "{3D543FA1-0B0C-4654-BA58-874444142C11}"
@@ -63,7 +57,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{35BBC692-47E8-4A12-8F8E-7D8C9ADA9F28} = {42E32377-5505-45FD-81C2-5BAAE2058B79}
 		{3D543FA1-0B0C-4654-BA58-874444142C11} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 		{94160CBF-C56B-4D1E-A597-430D9C029DCE} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 		{CCC2C901-8637-46FF-99CE-D8175305F8E2} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
