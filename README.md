@@ -1,6 +1,6 @@
 # Blazor.DownloadFileFast
 
-[![NuGet](https://buildstats.info/nuget/BlazorDownloadFileFast)](https://www.nuget.org/packages/BlazorDownloadFileFast)
+[![NuGet](https://img.shields.io/nuget/v/BlazorDownloadFileFast)](https://www.nuget.org/packages/BlazorDownloadFileFast)
 
 Fast download from files to the browser from Blazor without any javascript library reference or dependency.
 
