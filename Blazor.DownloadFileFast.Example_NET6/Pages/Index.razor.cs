@@ -11,7 +11,7 @@ public partial class Index
     [Inject]
     public IBlazorDownloadFileService BlazorDownloadFileService { get; set; } = null!;
 
-    private IRandomizerString _random = RandomizerFactory.GetRandomizer(new FieldOptionsTextLipsum { Paragraphs = 10 });
+    private readonly IRandomizerString _random = RandomizerFactory.GetRandomizer(new FieldOptionsTextLipsum { Paragraphs = 10 });
 
     public async Task DownloadFileAsync()
     {
@@ -20,4 +20,3 @@ public partial class Index
         await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
     }
 }
-
