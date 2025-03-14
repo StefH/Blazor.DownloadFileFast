@@ -1,6 +1,6 @@
 # Blazor.DownloadFileFast
 
-[![NuGet](https://img.shields.io/nuget/v/BlazorDownloadFileFast)](https://www.nuget.org/packages/BlazorDownloadFileFast)
+[![NuGet](https://buildstats.info/nuget/BlazorDownloadFileFast)](https://www.nuget.org/packages/BlazorDownloadFileFast)
 
 Fast download from files to the browser from Blazor without any javascript library reference or dependency.
 
@@ -36,4 +36,5 @@ await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
 
 ## Demo
 
-https://stefh.github.io/Blazor.DownloadFileFast/
+- https://wonderful-glacier-0cf7ba303.4.azurestaticapps.net
+- https://stefh.github.io/Blazor.DownloadFileFast/

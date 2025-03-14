@@ -1,4 +1,6 @@
-﻿namespace Blazor.DownloadFileFast.Utils;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Blazor.DownloadFileFast.Utils;
 
 /// <summary>
 /// Class MimeTypeMap. Copied from https://github.com/samuelneff/MimeTypeMap
@@ -8,7 +10,7 @@ internal static class MimeTypeMap
     private const string Dot = ".";
     private const string QuestionMark = "?";
     private const string DefaultMimeType = "application/octet-stream";
-    private static readonly Lazy<IDictionary<string, string>> _mappings = new Lazy<IDictionary<string, string>>(BuildMappings);
+    private static readonly Lazy<IDictionary<string, string>> Mappings = new(BuildMappings);
 
     private static IDictionary<string, string> BuildMappings()
     {
@@ -744,7 +746,7 @@ internal static class MimeTypeMap
     /// <param name="mimeType">The variable to store the MIME type.</param>
     /// <returns>The MIME type.</returns>
     /// <exception cref="ArgumentNullException" />
-    public static bool TryGetMimeType(string str, out string mimeType)
+    public static bool TryGetMimeType(string str, [NotNullWhen(true)] out string? mimeType)
     {
         if (str == null)
         {
@@ -760,7 +762,7 @@ internal static class MimeTypeMap
 
         if (!str.StartsWith(Dot))
         {
-            var index = str.LastIndexOf(Dot);
+            var index = str.LastIndexOf(Dot, StringComparison.Ordinal);
             if (index != -1 && str.Length > index + 1)
             {
                 str = str.Substring(index + 1);
@@ -769,7 +771,7 @@ internal static class MimeTypeMap
             str = Dot + str;
         }
 
-        return _mappings.Value.TryGetValue(str, out mimeType);
+        return Mappings.Value.TryGetValue(str, out mimeType);
     }
 
     /// <summary>
@@ -780,7 +782,7 @@ internal static class MimeTypeMap
     /// <exception cref="ArgumentNullException" />
     public static string GetMimeType(string str)
     {
-        return MimeTypeMap.TryGetMimeType(str, out var result) ? result : DefaultMimeType;
+        return TryGetMimeType(str, out var result) ? result : DefaultMimeType;
     }
 
     /// <summary>
@@ -803,7 +805,7 @@ internal static class MimeTypeMap
             throw new ArgumentException("Requested mime type is not valid: " + mimeType);
         }
 
-        if (_mappings.Value.TryGetValue(mimeType, out string extension))
+        if (Mappings.Value.TryGetValue(mimeType, out var extension))
         {
             return extension;
         }

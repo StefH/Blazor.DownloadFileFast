@@ -348,3 +348,4 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/Blazor.DownloadFileFast.Example_NET9/wwwroot/lib/bootstrap/dist
