@@ -9,7 +9,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.0" PrivateAssets="all" />
-		<PackageReference Include="RandomDataGenerator.Net" Version="1.0.17" />
+		<PackageReference Include="RandomDataGenerator.Net" Version="1.0.18" />
 	</ItemGroup>
 
 	<ItemGroup>

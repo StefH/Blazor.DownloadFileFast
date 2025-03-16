@@ -13,7 +13,6 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 {
     private readonly IJSRuntime _js;
 
-
     /// <summary>
     /// Initializes a new instance of the <see cref="BlazorDownloadFileService"/> class.
     /// </summary>
@@ -23,7 +22,9 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
         _js = js;
 
 #if NET7_0_OR_GREATER
+#pragma warning disable CA1416
         Task.Run(async () => await JSHost.ImportAsync("download.js", "/_content/BlazorDownloadFileFast/download7up.js"));
+#pragma warning restore CA1416
 #else
         Task.Run(async () => await _js.InvokeVoidAsync("eval", EmbeddedFileLoader.Instance.DownloadJS));
 #endif
@@ -39,7 +40,9 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
     public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes, string contentType)
     {
 #if NET7_0_OR_GREATER
+#pragma warning disable CA1416
         return ValueTask.FromResult(BlazorDownloadFileInterop.BlazorDownloadFileFast(fileName, contentType, bytes));
+#pragma warning restore CA1416
 #elif NET5_0_OR_GREATER
         // Check if the IJSRuntime is the WebAssembly implementation of the JSRuntime
         if (_js is IJSUnmarshalledRuntime webAssemblyJSRuntime)
