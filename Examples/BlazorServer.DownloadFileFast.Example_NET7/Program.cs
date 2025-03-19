@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 using BlazorServer.DownloadFileFast.Example_NET7.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
+builder.Services.AddBlazorDownloadFile();
 
 var app = builder.Build();
 

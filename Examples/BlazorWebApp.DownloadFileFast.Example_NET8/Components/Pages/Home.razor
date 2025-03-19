@@ -1,7 +1,26 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+
+@using System.Text
+@using Blazor.DownloadFileFast.Interfaces
+@using RandomDataGenerator.FieldOptions
+@using RandomDataGenerator.Randomizers
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<input class="btn btn-primary" @onclick="DownloadFileAsync" value="Download" />
 
-Welcome to your new app.
+@code
+{
+    [Inject]
+    public IBlazorDownloadFileService BlazorDownloadFileService { get; set; } = null!;
+
+    private readonly IRandomizerString _random = RandomizerFactory.GetRandomizer(new FieldOptionsTextLipsum { Paragraphs = 10 });
+
+    private async Task DownloadFileAsync()
+    {
+        var bytes = Encoding.ASCII.GetBytes(_random.Generate()!);
+
+        await BlazorDownloadFileService.DownloadFileAsync("example.txt", bytes);
+    }
+}
