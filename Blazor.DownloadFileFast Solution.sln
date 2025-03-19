@@ -28,6 +28,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.DownloadFileFast.Exa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.DownloadFileFast.Example_NET9", "Blazor.DownloadFileFast.Example_NET9\Blazor.DownloadFileFast.Example_NET9.csproj", "{8F9CBBFB-0048-D460-5A2C-E3BF1886A39E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Actions", "GitHub Actions", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\DeployToGitHubPages.yml = .github\workflows\DeployToGitHubPages.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +74,7 @@ Global
 		{B6269AAC-170A-4346-1234-579DED3D9A95} = {33997DC9-84AA-47E3-BEB5-C418065DC503}
 		{7F33AB3A-EFA6-4A06-A502-F19B5C84AFC2} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
 		{8F9CBBFB-0048-D460-5A2C-E3BF1886A39E} = {1D3B0899-8261-4023-B62E-F1A70CF0BBD8}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {42E32377-5505-45FD-81C2-5BAAE2058B79}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {95736335-0C8B-4FDA-8722-E08046339B83}
