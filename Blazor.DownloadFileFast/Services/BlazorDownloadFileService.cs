@@ -1,10 +1,7 @@
 ﻿#if NET7_0_OR_GREATER
 using System.Runtime.InteropServices.JavaScript;
-using System.Runtime.Versioning;
-#else
-using Blazor.DownloadFileFast.JavaScript;
 #endif
-
+using Blazor.DownloadFileFast.JavaScript;
 using Microsoft.JSInterop;
 
 namespace Blazor.DownloadFileFast.Services;
@@ -22,12 +19,15 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
         _js = js;
 
 #if NET7_0_OR_GREATER
+        if (BlazorUtils.IsWASM)
+        {
 #pragma warning disable CA1416
-        Task.Run(async () => await JSHost.ImportAsync("download.js", "/_content/BlazorDownloadFileFast/download7up.js"));
+            Task.Run(async () => await JSHost.ImportAsync("download.js", "/_content/BlazorDownloadFileFast/download7up.js"));
 #pragma warning restore CA1416
-#else
-        Task.Run(async () => await _js.InvokeVoidAsync("eval", EmbeddedFileLoader.Instance.DownloadJS));
+            return;
+        }
 #endif
+        Task.Run(async () => await _js.InvokeVoidAsync("eval", EmbeddedFileLoader.Instance.DownloadJS));
     }
 
     /// <inheritdoc />
@@ -39,21 +39,19 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
     /// <inheritdoc />
     public ValueTask<bool> DownloadFileAsync(string fileName, byte[] bytes, string contentType)
     {
-#if NET7_0_OR_GREATER
-#pragma warning disable CA1416
-        return ValueTask.FromResult(BlazorDownloadFileInterop.BlazorDownloadFileFast(fileName, contentType, bytes));
-#pragma warning restore CA1416
-#elif NET5_0_OR_GREATER
-        // Check if the IJSRuntime is the WebAssembly implementation of the JSRuntime
-        if (_js is IJSUnmarshalledRuntime webAssemblyJSRuntime)
+        if (BlazorUtils.IsWASM)
         {
-#if NET7_0_OR_GREATER
-            return ValueTask.FromResult(BlazorDownloadFileInterop.BlazorDownloadFileFast(fileName, contentType, bytes));
+#if NET5_0 || NET6_0
+            // Check if the IJSRuntime is the WebAssembly implementation of the JSRuntime
+            if (_js is IJSUnmarshalledRuntime webAssemblyJSRuntime)
+            {
+                return ValueTask.FromResult(webAssemblyJSRuntime.InvokeUnmarshalled<string, string, byte[], bool>("BlazorDownloadFileFast", fileName, contentType, bytes));
+            }
 #else
-            return ValueTask.FromResult(webAssemblyJSRuntime.InvokeUnmarshalled<string, string, byte[], bool>("BlazorDownloadFileFast", fileName, contentType, bytes));
+            // Use 7Up version
+            return ValueTask.FromResult(BlazorDownloadFileInterop.BlazorDownloadFileFast(fileName, contentType, bytes));
 #endif
         }
-#endif
 
         // Fall back to the slow method if not in WebAssembly
         return BlazorDownloadFileAsync(fileName, bytes, contentType);
@@ -68,7 +66,6 @@ internal class BlazorDownloadFileService : IBlazorDownloadFileService
 #if NET7_0_OR_GREATER
 // - https://linkdotnet.github.io/tips-and-tricks/blazor/#use-jsimport-or-jsexport-attributes-to-simplify-the-interop
 // - https://devblogs.microsoft.com/dotnet/use-net-7-from-any-javascript-app-in-net-7/
-[SupportedOSPlatform("browser")]
 public static partial class BlazorDownloadFileInterop
 {
     [JSImport("BlazorDownloadFileFast7Up", "download.js")]
