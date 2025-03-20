@@ -1,8 +1,8 @@
 name: DeployToGitHubPages
 env:
   PROJECT: Blazor.DownloadFileFast
-  APP: Blazor.DownloadFileFast.Example_NET9
-  PUBLISH_DIR: Blazor.DownloadFileFast.Example_NET9/bin/Release/net9.0/publish/wwwroot
+  APP: examples/Blazor.DownloadFileFast.Example_NET9
+  PUBLISH_DIR: examples/Blazor.DownloadFileFast.Example_NET9/bin/Release/net9.0/publish/wwwroot
 
 on:
   push:
